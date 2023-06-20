@@ -1,0 +1,105 @@
+<app-header></app-header>
+<!-- ============== SECTION PAGETOP ============== -->
+
+    <!-- ============== SECTION PAGETOP END// ============== -->
+    
+    
+    
+    <!-- ============== SECTION ============== -->
+    <section class="padding-y bg-light">
+    <div class="container">
+    
+    
+    <div class="row">
+      <main class="col-xl-8 col-lg-8">
+    
+        <!-- <article class="card mb-4">
+          <div class="content-body">
+            <div class="float-end">
+              <a href="/registre" class="btn btn-outline-primary">Register</a>
+              <a href="/login" class="btn btn-primary">Sign in</a>
+            </div>
+            <h5>Have an account?</h5>
+            <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+          </div>
+        </article> -->
+    
+        <!-- ============== COMPONENT CHECKOUT =============== -->			
+        <article class="card card-body">
+          <div class="content-body">
+            <h5 class="card-title"> Commande D'étails </h5>
+
+    
+              <hr class="my-4">
+    
+
+            <div *ngIf="hidden">
+              <div class="row">
+                <div class="col-sm-8 mb-3">
+                  <label for="" class="form-label" id="address">Addresse</label>
+                  <input  #addressInput  type="text" class="form-control" id="address" placeholder="Enter adresse du livraison" >
+                </div> <!-- col end.// -->
+    
+                <div class="col-sm-4 col-6 mb-3">
+                  <label for="" class="form-label" id="code_postal">Code postal</label>
+                  <input type="number"  #codepostalInput class="form-control"  placeholder="" id="code_postal" placeholder="Code Postal">
+                </div> <!-- col end.// -->
+
+              </div> <!-- row.// -->
+    
+              
+    
+              <div class="mb-4">
+                <label for="" class="form-label" id="message">Message pour le livreur</label>
+                <input type="text"  #messageInput class="form-control" id="message" placeholder="Message ...">
+              </div> <!-- col end.// -->
+            </div>
+              <div class="float-end">
+                <button class="btn btn-light">Cancel</button>
+                <button type="submit" class="btn btn-success" (click)="Add()">Continue</button>
+              </div>
+              <br>
+              <br>
+              <br>
+              
+              
+          </div> <!-- card-body end.// -->
+        </article> <!-- card end.// -->
+        <!-- ============== COMPONENT CHECKOUT .// =============== -->
+    
+      </main> <!-- col.// -->
+      <aside class="col-xl-4 col-lg-4">
+        <!-- ============== COMPONENT SUMMARY =============== -->
+        <article class="ms-lg-4 mt-4 mt-lg-0" style="max-width: 320px">
+            
+    
+
+    
+            <hr>
+            <h6 class="mb-4" >produits dans le panier</h6>
+            <div *ngFor="let produit of cartItems">
+            <figure class="itemside align-items-center mb-4" >
+              <div class="aside">
+                <b class="badge bg-secondary rounded-pill">{{ produit.quantite }}</b>
+                <img  src="http://localhost:8080/api/produit/{{produit.ref_produit}}" width="100" height="100"
+                class="img-sm rounded border">
+              </div>
+              <figcaption class="info">
+                <a href="#" class="title">{{produit.nom_produit}} <br> {{produit.couleur}}</a>
+                <div class="price text-muted">{{produit.prix_produit}}</div> <!-- price .// -->
+              </figcaption>
+            </figure>
+          </div>
+            
+              
+        </article> 
+        <!-- ============== COMPONENT SUMMARY .// =============== -->
+      </aside> <!-- col.// -->
+    </div> <!-- row.// -->
+    
+    <br><br>
+    
+    </div> <!-- container .//  -->
+    </section>
+    <!-- ============== SECTION END// ============== -->
+    <app-footer></app-footer>

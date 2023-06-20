@@ -1,0 +1,70 @@
+<app-header></app-header>
+<br>
+<div class="container">
+   
+  <div class="col-lg-12 mb-4">
+    <!-- Simple Tables -->
+    <div class="card">
+      <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+        <h6 class="m-0 font-weight-bold text-primary col-9" >Mes Commandes</h6>
+        <div class="input-group">
+          <div class="form-outline">
+            <input id="search-input" type="search" id="form1" class="form-control" placeholder="Recherche"/>
+          </div>
+          <button id="search-button" type="button" class="btn btn-primary">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+      </div>
+      
+      <div class="table-responsive">
+        <table class="table align-items-center table-flush">
+          <thead class="thead-light">
+            <tr>
+              <th>Num</th>
+              <th>produits</th>
+              <th>Montant</th>
+              <th>Date-C</th>
+              <th>Etat</th>
+              <th>Statut</th>
+              <th>Action</th>
+
+            </tr>
+          </thead>
+          <tbody *ngFor="let commande of commandes">
+
+            <tr>
+              <td>{{commande.ref_commande}}</td>
+              <td>
+                <ul>
+                  <li *ngFor="let produit of commande.produits">{{produit.nom_produit}}</li>
+                </ul>
+              </td>            
+              <td>{{commande.montant}}</td>
+              <td>{{commande.date_commande}}</td>
+              <td>
+                <button *ngIf="commande.etat === 'refusée'" type="button" class="btn btn-danger btn-sm mb-1">refusée</button>
+                <button *ngIf="commande.etat === 'acceptée'" type="button" class="btn btn-success btn-sm mb-1">acceptée</button>
+                <button *ngIf="commande.etat === 'en attente'" type="button" class="btn btn-light btn-sm mb-1">en-attente</button>
+
+              </td>               
+              <td>
+                <button *ngIf="commande.statut_commande === 'non livrer'" type="button" class="btn btn-danger btn-sm mb-1">non-livrer</button>
+                <button *ngIf="commande.statut_commande === 'livrer'" type="button" class="btn btn-success btn-sm mb-1">livrer</button>
+                <button *ngIf="commande.statut_commande === 'en attente'" type="button" class="btn btn-light btn-sm mb-1">en-attente</button>
+
+              </td>
+              <td><button type="button" class="btn btn-light btn-sm mb-1" (click)="afficher(commande.ref_commande)"> d'étails</button></td>
+
+          </tr>
+
+          
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+</div>   
+<br>
+  <app-footer></app-footer>

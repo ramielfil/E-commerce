@@ -1,0 +1,41 @@
+html:
+
+<!-- confirmer-code.component.html -->
+<div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card shadow-sm my-5">
+          <div class="card-body p-0 card bg-light mb-3">
+            <div class="login-form">
+              <div class="text-center">
+                <h1 class="h4 text-gray-900 mb-4"> Crée nouveau mot de passe</h1>
+              </div>
+              <form (ngSubmit)="save_modif()" #form="ngForm">
+            
+                <div class="form-group">
+                    <label for="newPassword">Nouveau mot de passe</label>
+                    <input type="password" class="form-control" id="newPassword" placeholder="Nouveau mot de passe"
+                           [(ngModel)]="newPassword" name="newPassword"  required
+                           #passwordInput (ngModelChange)="checkValidPassword()"  >
+                          
+                           <span class="alert" *ngIf="!validpassword && passwordInput.value === ''">
+                              <label for="newPassword" style="color: black;">Entrée non valide</label>
+                            </span>
+                </div>
+                <div class="form-group">
+                    <label for="confirmPassword">Confirmer le mot de passe</label>
+                    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirmer le mot de passe"
+                           [(ngModel)]="confirmPassword" name="confirmPassword" required>
+                           
+                  </div>
+                
+                  <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Confirmer</button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+

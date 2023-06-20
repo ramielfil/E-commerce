@@ -1,0 +1,101 @@
+<app-header></app-header>
+
+<!-- ============== SECTION PAGETOP ============== -->
+
+    <!-- ============== SECTION PAGETOP END// ============== -->
+    
+    <section class="padding-y bg-light">
+    <div class="container">
+    
+    <!-- =================== COMPONENT CART+SUMMARY ====================== -->
+    <div class="row">
+      <div class="col-lg-9">
+    
+        <div class="card">
+        <div class="content-body">
+          <h4 class="card-title mb-4">Les Prdouits dans le panier</h4>
+          <article class="row gy-3 mb-4" *ngFor="let produit of cartItems ; let i = index">
+            <div class="col-lg-5">
+              <figure class="itemside me-lg-5">
+                <div class="aside">         <img  class="img-sm img-thumbnail" src="http://localhost:8080/api/produit/{{produit.ref_produit}}" width="633" height="450">
+                  </div>
+                <figcaption class="info">
+                  <a href="#" class="title">{{produit.nom_produit}}</a>
+                  <p class="text-muted"> {{produit.prix_produit}} {{produit.couleur}}</p>
+
+                </figcaption>
+              </figure>
+            </div>
+                  
+            <div class="row mb-4">
+            <div class="col-md-4 col-6 mb-3">
+              <label class="form-label d-block">Quantity</label>
+              <div class="input-group input-spinner">
+                <button class="btn btn-icon btn-light" type="button" (click)="decrementQuantity(i)"> 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#999" viewBox="0 0 24 24">
+                    <path d="M19 13H5v-2h14v2z"></path>
+                  </svg>
+                </button>
+                <input class="form-control text-center" [(ngModel)]="produit.quantite"  id="quantite"  max="{{produit.quantitue_produit}}">
+                <button class="btn btn-icon btn-light" type="button" (click)="incrementQuantity(i)"> 
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#999" viewBox="0 0 24 24">
+                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"></path>
+                  </svg>
+                </button>
+              </div>
+              </div>
+              <div class="col-lg col-sm-4">
+                <div class="float-lg-end">
+                  <button class="btn btn-light text-danger" (click)="delete(produit)"> Remove</button>
+                </div>
+              </div> 
+            </div> 
+
+
+          </article> <!-- row.// -->
+    
+
+    
+        </div> <!-- card-body .// -->
+    
+        <div class="content-body border-top">
+          <p><i class="me-2 text-muted fa-lg fa fa-truck"></i> Livraison en 24h (**) Hors confinement</p>
+          <p class="text-muted">(**) Livraison sur le grand Tunis & Commande passée avant 14h sinon le lendemain matin
+          </p>
+        </div> <!-- card-body.// -->
+    
+        </div> <!-- card.// -->
+    
+      </div> <!-- col.// -->
+      <aside class="col-lg-3">
+    
+ 
+    
+        <div class="card">
+        <div class="card-body">
+          
+          
+          <div class="d-grid gap-2 my-3">
+            <button class="btn btn-success w-100" (click)="update(cartItems)"  > Valider </button>
+
+            <a href="/accueil " class="btn btn-light w-100"> accueil </a>
+          </div>
+        </div> <!-- card-body.// -->
+        </div> <!-- card.// -->
+    
+      </aside> <!-- col.// -->
+    
+    </div> <!-- row.// -->
+    <!-- =================== COMPONENT 1 CART+SUMMARY .//END  ====================== -->
+    
+    <br><br>
+    
+    </div> <!-- container .//  -->
+    </section>
+    
+    
+    
+    <!-- ============== SECTION  ============== -->
+
+    <!-- ============== SECTION END// ============== -->
+    <app-footer></app-footer>

@@ -1,0 +1,32 @@
+html:
+<!-- confirmer-code.component.html -->
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <div class="card shadow-sm my-5">
+        <div class="card-body p-0 card bg-light mb-3">
+          <div class="login-form">
+            <div class="text-center">
+              <h1 class="h4 text-gray-900 mb-4">Vérification du code</h1>
+            </div>
+            <form class="user" #form="ngForm" (ngSubmit)="onSubmit(form)">
+              <div class="form-group">
+                <input type="code" class="form-control" id="code" placeholder="Saisissez le code de vérification"
+                  [(ngModel)]="enteredCode" name="code" required>
+                <div class="alert alert-danger" *ngIf="form.controls.code.touched && form.controls.code.invalid">
+                  <div *ngIf="form.controls.code.errors?.required">Veuillez saisir le code de vérification</div>
+                </div>
+              </div>
+              <div class="form-group">
+                <button class="btn btn-primary btn-block" type="submit">Envoyer</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

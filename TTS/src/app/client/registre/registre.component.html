@@ -1,0 +1,91 @@
+<app-header></app-header>
+
+<div class="container-fluid h-custom">
+  <div class="row">
+    <div class="col-xl-6 col-lg-5 col-md-5 col-sm-10">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp" class="img-fluid" alt="Sample image">
+      </div>
+    </div>
+    <div class="col-xl-1 col-lg-1 col-md-1"></div>
+    <div class="col-xl-5 col-lg-6 col-md-6">
+      <div class="container-login">
+        <div class="row justify-content-center">
+          <div class="card shadow-sm my-5">
+            <div class="card-body p-0 card bg-light mb-3">
+              <div class="col-lg-12">
+                <div class="login-form">
+                  <div class="text-center">
+                    <h1 class="h4 text-gray-900 mb-4">Inscription</h1>
+                  </div>
+                  <form class="user form-floating" #form="ngForm" (ngSubmit)="register(form)">
+                    <div class="form-group">
+                      <label for="nom">Nom</label>
+                      <input type="text" class="form-control" [class.is-invalid]="!validname && nameTouched" id="nom" placeholder="Nom"
+                             [(ngModel)]="client.nom" name="nom" required #nomInput (focus)="hideAlert('nom')" (blur)="checkValidName(); nameTouched = true;">
+                      <span class="alert" *ngIf="!validname && nameTouched ">
+                        <label for="nom" style="color: black;">Veuillez entrer un nom valide</label>
+                      </span>
+                    </div>
+                    <div class="form-group">
+                      <label for="prenom">Prénom</label>
+                      <input type="text" class="form-control" [class.is-invalid]="!validprenom && prenomTouched" id="prenom" placeholder="Prénom"
+                             [(ngModel)]="client.prenom" name="prenom" required #prenomInput (focus)="hideAlert('prenom')" (blur)="checkValidPrenom(); prenomTouched = true;">
+                      <span class="alert" *ngIf="!validprenom && prenomTouched ">
+                        <label for="prenom" style="color: black;">Veuillez entrer un prénom valide</label>
+                      </span>
+                    </div>
+                    <div class="form-group">
+                      <label for="numtel">Numéro de téléphone</label>
+                      <input type="text" class="form-control" [class.is-invalid]="!validnumtel && numtelTouched" id="numtel" placeholder="Numéro de téléphone"
+                             [(ngModel)]="client.numtel" name="numtel" required #numtelInput (focus)="hideAlert('numtel')" (blur)="checkValidNumTel(); numtelTouched = true;">
+                      <span class="alert" *ngIf="!validnumtel && numtelTouched">
+                        <label for="numtel" style="color: black;">Veuillez entrer un numéro de téléphone valide</label>
+                      </span>
+                    </div>
+                    <div class="form-group">
+                      <label for="email">Email</label>
+                      <input type="email" class="form-control" [class.is-invalid]="!validemail && emailTouched" id="email" placeholder="Adresse email"
+                             [(ngModel)]="client.email" name="email" required #emailInput (focus)="hideAlert('email')" (blur)="checkValidEmail(); emailTouched = true;">
+                      <span class="alert" *ngIf="!validemail && emailTouched">
+                        <label for="email" style="color: black;">Veuillez entrer une adresse email valide</label>
+                      </span>
+                    </div>
+                    <div class="form-group">
+                      <label for="password">Mot de passe</label>
+                      <input type="password" class="form-control" [class.is-invalid]="!validpassword && passwordTouched" id="password" placeholder="Mot de passe"
+                             [(ngModel)]="client.password" name="password" required #passwordInput (focus)="hideAlert('password')" (blur)="checkValidPassword(); passwordTouched = true;">
+                      <span class="alert" *ngIf="!validpassword && passwordTouched">
+                        <label for="password" style="color: black;">Veuillez entrer un mot de passe valide</label>
+                      </span>
+                    </div>
+                    <div class="form-group">
+                      <label for="passwordConfirm">Confirmation de mot de passe</label>
+                      <input type="password" class="form-control" [class.is-invalid]="!checkPasswordsMatch(form) && passwordConfirmTouched"
+                             id="passwordConfirm" placeholder="Confirmation de mot de passe" [(ngModel)]="client.passwordConfirm" name="passwordConfirm"
+                             required #passwordConfirmInput (focus)="hideAlert('passwordConfirm')" (blur)="checkPasswordsMatch(form); passwordConfirmTouched = true;">
+                      <span class="alert" *ngIf="!checkPasswordsMatch(form) && passwordConfirmTouched">
+                        <label for="passwordConfirm" style="color: black;">Les mots de passe ne correspondent pas</label>
+                      </span>
+                    </div>
+					<button type="submit" class="btn btn-primary btn-block" [disabled]="!form.valid 
+					|| !checkPasswordsMatch(form) || !validname || !validprenom 
+					|| !validnumtel || !validemail || !validpassword">S'inscrire</button>
+          <div class="alert-container" *ngIf="showAlert">
+            <div class="alert-message">
+              <p>Votre Compte a été crée avec succés ! Voir votre email .</p>
+              <button (click)="navigateTo()">OK!</button>
+            </div>
+          </div>
+				</form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>

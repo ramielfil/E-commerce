@@ -1,0 +1,8 @@
+#small_nom {
+    max-height: calc(2em * 2); /* Set the max height to 2 lines */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }

@@ -1,0 +1,138 @@
+<app-header></app-header>
+<!-- ============== SECTION PAGETOP ============== -->
+
+    <!-- ============== SECTION PAGETOP END// ============== -->
+    
+    <!-- ============== SECTION CONTENT ============== -->
+    <section class="padding-y">
+    <div class="container">
+    
+    <div class="row">
+      <aside class="col-lg-3">
+    
+    <button class="btn btn-outline-secondary mb-3 w-100  d-lg-none" data-bs-toggle="collapse" data-bs-target="#aside_filter">Show filter</button>
+    
+    <!-- ===== Card for sidebar filter ===== -->
+    <div id="aside_filter" class="collapse card d-lg-block mb-5">
+    
+      <article class="filter-group">
+      <header class="card-header">
+        <a href="/recherche" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside1">
+        <i class="icon-control fa fa-chevron-down"></i>   Categories 
+        </a>
+      </header>
+      <div class="collapse " id="collapse_aside1">
+        <div class="card-body">
+        <ul class="list-menu" *ngFor="let categorie of categories">
+          <li>    <a [routerLink]="['/recherche']" [queryParams]="{ categorie: categorie.ref_categorie }">
+            {{ categorie.nom_categorie }}
+          </a></li>
+
+        </ul>
+        </div> <!-- card-body.// -->
+      </div> <!-- collapse.// -->
+      </article> <!-- filter-group // -->
+
+
+    
+      <article class="filter-group">
+        <header class="card-header">
+          <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside_brands">
+            <i class="icon-control fa fa-chevron-down"></i> Marques
+          </a>
+        </header>
+        <div class="collapse show" id="collapse_aside_brands">
+          <div class="card-body" *ngFor="let marque of marques">
+            <label class="form-check mb-2">
+              <input class="form-check-input" type="checkbox" [checked]="isSelectedBrand(marque.ref_marque)"
+                     (change)="onBrandSelectionChange(marque.ref_marque, $event.target['checked'])">
+              <span class="form-check-label">{{ marque.nom_marque }}</span>
+
+            </label>
+          </div>
+        </div>
+      </article>
+    
+      <article class="filter-group">
+      <header class="card-header">
+        <a href="#" class="title" data-bs-toggle="collapse" data-bs-target="#collapse_aside2">
+        <i class="icon-control fa fa-chevron-down"></i>  Price 
+        </a>
+      </header>
+      <div class="collapse show" id="collapse_aside2">
+        <div class="card-body">
+        <div class="row mb-3">
+          <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider>
+
+        </div> <!-- row end.// -->
+        <section class="filter-section">
+          <h3>Prix</h3>
+          <form method="get" name="price-filters">
+            <button (click)="clearPrice()" class="clear" id="clearPrice" class="btn btn-primary btn-sm">Clear</button>
+            <div class="price-slider">
+              <div class="values group">
+                <span class="labels">Min </span>
+                <input class="form-control" name="minVal" id="minVal" type="text" [(ngModel)]="minValue">
+                <span class="labels">Max</span>
+                <input class="form-control" name="maxVal" id="maxVal" type="text" [(ngModel)]="maxValue">
+              </div>
+            </div>
+          </form>
+        </section>
+        
+      <!-- <h2>Price Slider Demo by DevelopersDiscussion.com</h2>
+      <br/>
+      <ng5-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ng5-slider> -->
+      <button class="btn btn-light w-100" type="button" (click)="priceFiltering('filter')">Apply</button>
+    </div> <!-- card-body.// -->
+      </div> <!-- collapse.// -->
+      </article> <!-- filter-group // -->
+    
+
+    
+      
+    
+    </div> <!-- card.// -->
+    <!-- ===== Card for sidebar filter .// ===== -->
+    
+      </aside> <!-- col .// -->
+      <main class="col-lg-9">
+        
+      <header class="d-sm-flex align-items-center border-bottom mb-4 pb-3">
+        <strong class="d-block py-2"> Produits  </strong> 
+
+      </header>
+    
+      <!-- ========= content items ========= -->
+      <div class="row">
+        <div class="col-lg-4 col-md-6 col-sm-6"  *ngFor="let produit of produits">
+          <figure class="card card-product-grid">
+          <div class="img-wrap"> 
+            <img  src="http://localhost:8080/api/produit/{{produit.ref_produit}}" (click)="affiche(produit.ref_produit)">
+          </div>
+          <figcaption class="info-wrap border-top">
+            <div class="price-wrap">
+            <strong class="price" id="small_nom">{{produit.nom_produit}}</strong>
+            </div> <!-- price-wrap.// -->
+            <p class="title mb-2">{{produit.prix_produit}} TND</p>
+            
+            <a href="/details" class="btn btn-primary" (click)="affiche(produit.ref_produit)">Details</a>
+          </figcaption>
+          </figure>
+        </div> <!-- col end.// -->
+    
+
+      </div> <!-- row end.// -->
+    
+      <hr>
+  
+                
+  
+  
+  
+                  </main>
+                  </div> 
+  
+                  </div> 
+                  </section>
+<app-footer></app-footer>

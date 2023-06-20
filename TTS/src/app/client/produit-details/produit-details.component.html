@@ -1,0 +1,151 @@
+<app-header></app-header>
+<!-- ============== SECTION PAGETOP ============== -->
+
+    <!-- ============== SECTION PAGETOP END// ============== -->
+    
+    <!-- ============== SECTION CONTENT ============== -->
+    <section class="padding-y">
+    <div class="container">
+    
+    <div class="row">
+    <aside class="col-lg-6">
+      <div class="img-big-wrap img-thumbnail">
+
+          <img  src="http://localhost:8080/api/produit/{{produit.ref_produit}}" width="633" height="450">
+
+      </div> <!-- img-big-wrap.// -->
+
+    </aside>
+    <main class="col-lg-6">
+      <article class="ps-lg-3">
+      <h4 class="title text-dark">{{produit.nom_produit}} <br> {{produit.nom_marque}} </h4>
+
+    
+      <div class="mb-3"> 
+        <var class="price h5">{{produit.prix_produit}}</var> 
+        <span class="text-muted"> TND</span> 
+      </div> 
+    
+      <p>{{produit.desc_produit}}.</p>
+    
+      <dl class="row">
+        <dt class="col-3">Type:</dt>
+        <dd class="col-9">{{produit.categorie.nom_categorie}}</dd>
+
+        <dt class="col-3">Brand</dt>
+        <dd class="col-9">{{produit.marque.nom_marque}} </dd>
+    
+        <dt class="col-3">Color</dt>
+        <dd class="col-9">{{produit.couleur}}</dd>
+    
+        <dt class="col-3">Garantie</dt>
+        <dd class="col-9">{{produit.garantie}} </dd>
+
+        <dt class="col-3">Disponibilité</dt>
+        <dd class="col-9">
+          <span [style.color]="isAvailable() ? 'green' : 'red'">
+            {{ isAvailable() ? 'En stock' : 'Hors stock' }}
+          </span>
+        </dd>
+
+      </dl>
+    
+      <hr>
+    
+
+      <button class="btn  btn-warning btn-sm" (click)="addItem2(produit)" [disabled]="isOutOfStock(produit)">
+        <i class="me-1 fa fa-shopping-basket"></i> acheter
+      </button>
+      <button class="btn btn-primary btn-sm" (click)="addItem(produit)" [disabled]="isOutOfStock(produit)">
+        <i class="me-1 fa fa-shopping-basket"></i> ajouter au panier
+      </button>
+      
+      
+      </article> <!-- product-info-aside .// -->
+    </main> <!-- col.// -->
+    </div> <!-- row.// -->
+    
+    </div> <!-- container .//  -->
+    </section>
+    <!-- ============== SECTION CONTENT END// ============== -->
+    
+    <!-- ============== SECTION  ============== -->
+    <section class="padding-y bg-light border-top">
+    <div class="container">
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-lg-8">
+    <!-- =================== COMPONENT SPECS ====================== -->
+    <div class="card">
+      <header class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+        <a href="#" data-bs-target="#tab_specs" data-bs-toggle="tab" class="nav-link active">Caracteristiques</a>
+        </li>
+ 
+
+      </ul>
+      </header>
+      <div class="tab-content">
+      <article id="tab_specs" class="tab-pane show active card-body">
+
+        <table class="table border table-hover">
+        <tr>
+          <th>  Display: </th> <td> {{produit.taille_ecran}} </td>
+        </tr>
+        <tr>
+          <th>  Processor capacity: </th> <td> {{produit.processeur}} </td>
+        </tr>
+        <tr>
+          <th>  Camera quality: </th> <td>{{produit.qualite_camera}}  </td>
+        </tr>
+        <tr>
+          <th>  Memory </th> <td> {{produit.ram}} </td>
+        </tr>
+        <tr>
+          <th>  Graphics </th> <td> {{produit.graphique}} </td>
+        </tr>
+        <tr>
+          <th>  Stockage </th> <td> {{produit.stockage}} </td>
+        </tr>
+        <tr>
+          <th>  Sim </th> <td> {{produit.sim}} </td>
+        </tr>
+        </table>
+      </article> <!-- tab-content.// -->
+
+
+      </div>
+    </div>
+    <!-- =================== COMPONENT SPECS .// ================== -->   
+      </div> <!-- col.// -->
+      <div class="col-2"></div>
+
+      <!-- <aside class="col-lg-4">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Produits de la même catégorie</h5>
+        <div *ngFor="let relatedProduct of relatedProducts">
+          <article class="itemside mb-3">
+            <a href="#" class="aside">
+              <img src="http://localhost:8080/api/produit/{{relatedProduct.ref_produit}}" width="96" height="96" class="img-md img-thumbnail">
+
+            </a>
+            <div class="info">
+              <a href="#" class="title mb-1">{{ relatedProduct.nom_produit }}</a>
+              <strong class="price">{{ relatedProduct.prix_produit }}</strong>
+            </div>
+          </article>
+        </div>
+      </div>
+    </div>
+    
+      </aside>  -->
+    </div>
+    
+    <br><br>
+    
+    </div><!-- container // -->
+    </section>
+    <!-- =============== SECTION  END// ============== -->
+    <app-footer></app-footer>

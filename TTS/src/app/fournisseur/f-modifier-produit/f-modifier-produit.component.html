@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="assets/img/logo/logo.png" rel="icon">
+  <title>RuangAdmin - Simple Tables</title>
+
+</head>
+
+<body id="page-top">
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+        <div class="sidebar-brand-icon">
+          <img src="assets/img/flm.png">
+        </div>
+        <div class="sidebar-brand-text mx-3">Fast Lane Market</div>
+      </a>
+      <hr class="sidebar-divider my-0">
+
+
+
+
+
+      <li class="nav-item active">
+        <a class="nav-link" href="/fournisseur/consulter-produits">
+          <i class="fas fa-fw fa-palette"></i>
+          <span>Produits</span>
+        </a>
+      </li>
+
+
+
+
+      <hr class="sidebar-divider">
+      <div class="version" id="version-ruangadmin"></div>
+    </ul>
+    <!-- Sidebar -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <!-- TopBar -->
+        <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+
+          <ul class="navbar-nav ml-auto">
+            <div class="topbar-divider d-none d-sm-block"></div>
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <img class="img-profile rounded-circle" src="assets/img/boy.png" style="max-width: 60px">
+                <span class="ml-2 d-none d-lg-inline text-white small" style="margin-right:15px">fournisseur</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item " href="/f-modifier-profil">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item" href="/f-changer-password">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  changer mot de passe
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <!-- Topbar -->
+        <!-- Container Fluid-->
+<div class="container-fluid" id="container-wrapper">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+      <h1 class="h3 mb-0 text-gray-800">Produits</h1>
+    </div>
+<!--*****************************************************************************************************-->
+<!--*****************************************************************************************************-->
+  <div class="container-login">
+<div class="row justify-content-center">
+<div class="card shadow-sm my-5">
+<div class="card-body p-0 card bg-light mb-3">
+  <div class="col-lg-12">
+  <div class="login-form">
+    <div class="text-center">
+    <h1 class="h4 text-gray-900 mb-4">Modifier Quantité</h1>
+    </div>
+                <form class="user form-floating" #form="ngForm" (ngSubmit)="save_modif(produit)" enctype="multipart/form-data">
+                  <div class="row">
+                    <div class="form-group col-lg-9">
+                      <label for="nom">Nom</label>
+                      <input type="text" class="form-control" [class.is-invalid]="!validname" id="nom" placeholder="Nom"
+                         [(ngModel)]="produit.nom_produit" name="nom_produit" required disabled #nomInput (ngModelChange)="checkValidName()">
+                    
+                      <span class="alert" *ngIf="!validname && nomInput.value === ''">
+                      <label for="nom" style="color: black;">Entrée non valide</label>
+                      </span>
+                    </div>
+                  <div class="form-group col-3 " >
+                    <label for="Ref-Produit">Ref-Produit</label>
+                    <input type="text" class="form-control"  id="Ref-Produit" 
+                           [(ngModel)]="produit.ref_produit" name="Ref-Produit" required disabled  >
+                
+                    <span class="alert" *ngIf="">
+                      <label for="nom" style="color: black;">Ref Marque</label>
+                    </span>
+                  </div>
+                </div>
+                
+                <div class="form-group ">
+                  <label for="desc_produit">Descritpion</label>
+                  <input type="text" class="form-control" [class.is-invalid]="!validDesc" id="desc_produit" placeholder="Description Produit"
+                     [(ngModel)]="produit.desc_produit" name="desc_produit" required disabled #descInput (ngModelChange)="checkValidDesc()">
+                
+                  <span class="alert" *ngIf="!validDesc && descInput.value === ''">
+                  <label for="desc_produit" style="color: black;">Description est vide ! </label>
+                  </span>
+                </div>
+                <div class="row">
+                    <div class="form-group col-lg-2">
+                      <label>Quantité</label>
+                      <input type="number" class="form-control"  [(ngModel)]="produit.quantitue_produit" name="quantitue_produit" disabled>
+                    </div>
+                    <div class="input-group-prepend col-1" style="padding-top: 30px; padding-bottom: 30px;">
+                      <span class="input-group-text">+</span>
+                    </div>
+                    <div class="form-group col-lg-3">
+                      <label>Quantité Ajouter</label>
+                      <input type="number" class="form-control" [(ngModel)]="quantiteAjoutee" name="quantiteAjoutee">
+                    </div>
+                    <div class="input-group-prepend col-1" style="padding-top: 30px; padding-bottom: 30px;">
+                      <span class="input-group-text">=</span>
+                    </div>
+                    <div class="form-group col-lg-2">
+                      <label>Total Quantité</label>
+                      <input type="text" class="form-control" id="quantitue_produit" [(ngModel)]="produit.quantitue_produit" [value]="calculerTotalQuantite()" name="quantitue_produit" disabled>
+                    </div>
+                  </div>
+                  
+                  
+                <!-- <div class="row">
+                    <div class="form-group col-lg-3">
+                      <label>Quantité</label>
+                      <input type="text" class="form-control" id="quantite" placeholder="Entrer Quantité"
+                             [(ngModel)]="produit.quantite_produit" name="quantite_produit" >
+                    </div>
+                    <div class="input-group-prepend col-1" style="padding-top: 37px">
+                      <span class="input-group-text">+</span>
+                    </div>
+                    <div class="form-group col-lg-3">
+                      <label for="quantite_ajoutee">Quantité Du Nouveau Produit</label>
+                      <div class="input-group">
+                        <input type="text" class="form-control" id="quantite_ajoutee" placeholder="Entrer La nouvelle Quantité"
+                               [(ngModel)]="produit.quantite_ajoutee" required>
+                      </div>
+                    </div>
+                    <div class="input-group-prepend col-1" style="padding-top: 37px">
+                      <span class="input-group-text">=</span>
+                    </div>
+                    <div class="form-group col-lg-2">
+                      <label>Total Quantité</label>
+                      <input type="text" class="form-control" id="total_quantite" [value]="calculerTotalQuantite()" name="total_quantite" disabled>
+                    </div>
+                  </div> -->
+                  
+                  
+                  
+                  
+                  
+                  <div class="row">
+                    <div class="form-group col-lg-6">
+                      <label for="prix">Prix</label>
+                      <input type="text" class="form-control" [class.is-invalid]="!validprix" id="prix" placeholder="Entrer Prix"
+                         [(ngModel)]="produit.prix_produit" name="prix_produit" required disabled #prixInput (ngModelChange)="checkValidPrix()">
+                    
+                      <span class="alert" *ngIf="!validprix && prixInput.value === ''">
+                      <label for="prix" style="color: black;">Prix est vide ! </label>
+                      </span>
+                    </div>
+                  </div>
+                  <br>
+                  <hr>
+                  <div class="row">
+                    <div class="form-group col-6">
+                      <img src="http://localhost:8080/api/produit/{{produit.ref_produit}}" height="100" 
+                      ngModel name="img1"
+                      #img1 ="ngModel"
+                      required disabled >
+                      <input type="file" accept="image/*" (change)="onFileSelected($event)" disabled /> <!-- Champ pour la nouvelle image -->
+
+                    </div>
+                    <div class="form-group col-3">
+                      <label for="Ref-marque">Marque</label>
+                      <select name="ref_marque" [(ngModel)]="produit.marque.ref_marque" disabled >
+                        <option *ngFor="let item of marque" [value]="item.ref_marque">{{ item.nom_marque }}</option>
+                      </select>
+                    </div>
+                    
+                    <div class="form-group col-3">
+                      <label for="Ref-categorie">Categorie</label>
+                      <select name="ref_categorie" [(ngModel)]="produit.categorie.ref_categorie"  disabled>
+                        <option *ngFor="let item of categorie" [value]="item.ref_categorie">{{ item.nom_categorie }}</option>
+                      </select>
+                    </div>
+                    
+                </div>
+                <br>
+                <hr>
+                <div class="row">
+                  <div class="form-group col-lg-4">
+                    <label for="couleur">Couleur</label>
+                    <input type="text" class="form-control" [class.is-invalid]="!validcouleur" id="couleur" placeholder="Entrer Couleur"
+                       [(ngModel)]="produit.couleur" name="couleur" required disabled #couleurInput (ngModelChange)="checkValidCouleur()">
+                  
+                    <span class="alert" *ngIf="!validcouleur && couleurInput.value === ''">
+                    <label for="couleur" style="color: black;">Couleur est vide ! </label>
+                    </span>
+                  </div>
+                  <div class="form-group col-4 " >
+                    <label for="qualite_camera">Qualité Camera</label>
+                    <input type="text" class="form-control" id="qualite_camera" 
+                           [(ngModel)]="produit.qualite_camera "name="qualite_camera" required disabled  placeholder="Entrer Qualité Du Camera">
+                
+                    <span class="alert" *ngIf="">
+                      <label for="qualite_camera" style="color: black;">Entrer Qualité Du Camera</label>
+                    </span>
+                  </div>
+                  <div class="form-group col-4 " >
+                    <label for="processeur">Processeur</label>
+                    <input type="text" class="form-control" id="processeur" 
+                           [(ngModel)]="produit.processeur"name="processeur" required disabled  placeholder="Entrer Type De Processeur">
+                
+                    <span class="alert" *ngIf="">
+                      <label for="processeur" style="color: black;">Entrer Type De Processeur</label>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group col-4 " >
+                    <label for="ram">Ram</label>
+                    <input type="text" class="form-control"  id="ram" placeholder="Taille Du Ram"
+                           [(ngModel)]="produit.ram" name="ram" required disabled #ram >
+                
+                    <span class="alert" *ngIf="">
+                      <label for="ram" style="color: black;">Entrée Un Tailel Du Ram</label>
+                    </span>
+                  </div>
+                  <div class="form-group col-4 " >
+                    <label for="sim">Sim</label>
+                    <input type="text" class="form-control"  id="sim" 
+                           [(ngModel)]="produit.sim" name="sim" required disabled  #sim placeholder=" Nombre Du Sim">
+                
+                    <span class="alert" *ngIf="">
+                      <label for="sim" style="color: black;">Entrer Nombre Du Sim</label>
+                    </span>
+                  </div>
+                  <div class="form-group col-4 " >
+                    <label for="stockage">Stockage</label>
+                    <input type="text" class="form-control"  id="stockage" 
+                           [(ngModel)]="produit.stockage"name="stockage" required disabled  #stockage placeholder="Taille de Stockage">
+                
+                    <span class="alert" *ngIf="">
+                      <label for="stockage" style="color: black;">Entrer Taille Du Stockage</label>
+                    </span>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="form-group col-4 " >
+                    <label for="taille_ecran">Taille D'écran</label>
+                    <input type="text" class="form-control"  id="taille_ecran" placeholder="Taille D'écran"
+                           [(ngModel)]="produit.taille_ecran" name="taille_ecran" required disabled #taille_ecran >
+                
+                    <span class="alert" *ngIf="">
+                      <label for="taille_ecran" style="color: black;">Entrée Un Taille D'écran</label>
+                    </span>
+                  </div>
+                  <div class="form-group col-4 " >
+                    <label for="graphique">Graphique</label>
+                    <input type="text" class="form-control"  id="graphique" 
+                           [(ngModel)]="produit.graphique" name="graphique" required disabled  #graphique >
+                
+                    <span class="alert" *ngIf="">
+                      <label for="graphique" style="color: black;">Entrer Le Graphique</label>
+                    </span>
+                  </div>
+                  <div class="form-group col-4 " >
+                    <label for="garantie">Garantie</label>
+                    <input type="text" class="form-control"  id="garantie" 
+                           [(ngModel)]="produit.garantie"name="garantie" required disabled  #garantie >
+                
+                    <span class="alert" *ngIf="">
+                      <label for="garantie" style="color: black;">Entrer La Duré Du Garantie</label>
+                    </span>
+                  </div>
+                </div>
+                
+                  <div class="form-group">
+                    <button class="btn btn-primary btn-block" [disabled]="!validname || !validprenom || !validemail || !validnumtel">
+                      Confirmer
+                    </button>
+                    <br>
+                  </div>
+                </form>
+                
+
+  </div>
+  </div>
+</div>
+</div>
+</div>
+</div>
+<!--*****************************************************************************************************-->
+<!--*****************************************************************************************************-->
+
+
+    <!-- Modal Logout -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to logout?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+            <button (click)="logout()" class="btn btn-primary">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+          <!---Container Fluid-->
+        </div>
+        <!-- Footer -->
+        <footer class="sticky-footer bg-white">
+          <div class="container my-auto">
+            <div class="copyright text-center my-auto">
+              <span>copyright &copy; <script> document.write(new Date().getFullYear()); </script>  2023 infolib. All rights reserved - developed by
+                <b><a href="https://indrijunanda.gitlab.io/" target="_blank">Rami Elfil</a></b>
+              </span>
+            </div>
+          </div>
+        </footer>
+        <!-- Footer -->
+      </div>
+    </div>
+  
+    <!-- Scroll to top -->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+  
+  
+  
+  </body>
+  
+  </html>

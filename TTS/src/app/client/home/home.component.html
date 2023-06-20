@@ -1,0 +1,191 @@
+
+<!-- ================ SECTION INTRO ================ -->
+<br>
+<div class="row" id="cont-img">
+  <div class="col-2"></div>
+  <div class="col-8  h-100 bg-gray" > <!-- Added the "bg-gray" class -->
+    <section class="section-intro padding-top-sm">
+      <div class="container ">
+        <main class="card p-3 bg-gray  h-100" >
+          <div class="carousel-container carousel-1">
+            <mdb-carousel controls="true" indicators="true" [interval]="3000" slideShow="true">
+              <ng-container *ngFor="let produit of produits">
+                <mdb-carousel-item>
+                  
+                  <h3 class="product-desc" id="small_desc2" (click)="affiche(produit.ref_produit)">{{produit.nom_produit}}</h3>
+                  <article class="card-banner bg-gray h-100" style="min-height: 400px">
+                    
+                    <img src="http://localhost:8080/api/produit/{{produit.ref_produit}}" height="100%"  class="img-bg" (click)="affiche(produit.ref_produit)">
+                  </article>
+                </mdb-carousel-item>
+              </ng-container>
+            </mdb-carousel>
+          </div>
+        </main>
+      </div> <!-- container end.// -->
+    </section>
+    <br>
+  </div>
+  <div class="col-2"></div>
+</div>
+
+
+
+
+
+
+
+  <!-- ================ SECTION INTRO END.// ================ -->
+  
+  
+  <!-- ================ SECTION PRODUCTS ================ -->
+  <section class="padding-top">
+  <div class="container">
+  
+    <header class="section-heading">
+      <div class="d-flex align-items-center">
+        <h3 class="section-title d-inline-block">Produit</h3>
+        <a routerLink="/recherche" class="ml-3">
+          <strong class="d-block py-2">Voir plus</strong>
+        </a>
+      </div>
+    </header> 
+  
+    <div class="row"  >
+      <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let produit of shuffledProduits.slice().slice(0, 16); let i = index ">
+        <figure class="card card-product-grid">
+          <a  class="img-wrap" (click)="affiche(produit.ref_produit)"> 
+            <span class="topbar"> <b class="badge bg-success"> Offer </b> </span>
+            <img  src="http://localhost:8080/api/produit/{{produit.ref_produit}}" width="400" height="300">
+          </a>
+          <figcaption class="info-wrap border-top">
+            <a   (click)="affiche(produit.ref_produit)">  </a>
+            <a  class="title text-truncate" (click)="affiche(produit.ref_produit)">{{produit.nom_produit}}</a>
+            <small class="text-muted product-desc" id="small_desc">{{produit.desc_produit}}</small>
+            <div class="price-wrap">
+              <br>
+              <span class="price">{{produit.prix_produit}}  TND      </span> 
+            </div> <!-- price-wrap.// -->
+          </figcaption>
+        </figure>
+      </div> <!-- col end.// -->
+  
+     
+    </div> <!-- row end.// -->
+  
+  </div> <!-- container end.// -->
+  </section>
+  <!-- ================ SECTION PRODUCTS END.// ================ -->
+  
+  
+  <!-- ================ SECTION FEATURE ================ -->
+
+  <section class="padding-top">
+
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-12">
+          <div class="row">
+            <header class="section-heading">
+              <h3 class="section-title">Nouveaux Produits</h3>
+            </header> 
+            <div *ngFor="let produit of produits.slice().reverse().slice(0, 2); let i = index" class="col-md-6">
+              <article class="card-banner bg-gray h-100" style="min-height: 200px">
+                <div class="p-3 p-lg-5" style="max-width:70%">
+                  <h3 class="product-desc" id="small_desc">{{produit.nom_produit}}</h3>
+                  <p>{{produit.couleur}} // {{produit.prix_produit}} TND</p>
+                  <a class="btn btn-warning" (click)="affiche(produit.ref_produit)">Voir l'offre</a>
+                </div>
+                <img src="http://localhost:8080/api/produit/{{produit.ref_produit}}" height="100%" class="img-bg">
+              </article>
+            </div>
+          </div>
+        </div>
+      </div> <!-- row.// -->
+    </div> <!-- container end.// -->
+  </section>
+  <section class="padding-top">
+    <div class="container">
+      <div class="row gy-4">
+        <div class="col-lg-12">
+          <div class="row">
+            <div *ngFor="let produit of produits.slice().reverse().slice(2, 4); let i = index" class="col-md-6">
+              <article class="card-banner bg-gray h-100" style="min-height: 200px">
+                <div class="p-3 p-lg-5" style="max-width:70%">
+                  <h3 class="product-desc" id="small_desc">{{produit.nom_produit}}</h3>
+                  <p>{{produit.couleur}} // {{produit.prix_produit}} TND</p>
+                  <a class="btn btn-warning" (click)="affiche(produit.ref_produit)">Voir l'offre</a>
+                </div>
+                <img src="http://localhost:8080/api/produit/{{produit.ref_produit}}" height="100%" class="img-bg">
+              </article>
+            </div>
+          </div>
+        </div>
+      </div> <!-- row.// -->
+    </div> <!-- container end.// -->
+  </section>
+  
+  <!-- ================ SECTION FEATURE END.// ================ -->
+  
+
+  
+  <section class="padding-y">
+    <div class="container">
+    <article class="card p-3 p-lg-5">
+      <div class="row g-3">
+        <div class="col-lg-3 col-md-6">	
+        <figure class="icontext">
+          <div class="icon">
+            <span class="icon-sm bg-warning-light text-warning rounded">
+              <i class="fa fa-thumbs-up"></i>
+            </span>
+          </div>
+          <figcaption class="text">
+            <h6 class="title">Reasonable prices</h6>
+            <p>Have you ever finally just  </p>
+          </figcaption>
+        </figure> <!-- icontext // -->
+        </div><!-- col // -->
+        <div class="col-lg-3 col-md-6">	
+        <figure class="icontext">
+          <div class="icon">
+            <span class="icon-sm bg-warning-light text-warning rounded">
+              <i class="fa fa-plane"></i>
+            </span>
+          </div>
+          <figcaption class="text">
+            <h6 class="title">Worldwide shipping</h6>
+            <p>Have you ever finally just  </p>
+          </figcaption>
+        </figure> <!-- icontext // -->
+        </div><!-- col // -->
+        <div class="col-lg-3 col-md-6">	
+        <figure class="icontext">
+          <div class="icon">
+            <span class="icon-sm bg-warning-light text-warning rounded">
+              <i class="fa fa-star"></i>
+            </span>
+          </div>
+          <figcaption class="text">
+            <h6 class="title">Best ratings</h6>
+            <p>Have you ever finally just  </p>
+          </figcaption>
+        </figure> <!-- icontext // -->
+        </div> <!-- col // -->
+        <div class="col-lg-3 col-md-6">	
+        <figure class="icontext">
+          <div class="icon">
+            <span class="icon-sm bg-warning-light text-warning rounded">
+              <i class="fa fa-phone"></i>
+            </span>
+          </div>
+          <figcaption class="text">
+            <h6 class="title">Help center</h6>
+            <p>Have you ever finally just  </p>
+          </figcaption>
+        </figure> <!-- icontext // -->
+        </div> <!-- col // -->
+      </div> <!-- row // -->
+    </article>
+    </div><!-- //container -->
+  </section>

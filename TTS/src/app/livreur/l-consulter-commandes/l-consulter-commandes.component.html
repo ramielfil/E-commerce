@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="assets/img/logo/logo.png" rel="icon">
+  <title>RuangAdmin - Simple Tables</title>
+
+</head>
+
+<body id="page-top">
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" >
+        <div class="sidebar-brand-icon">
+          <img src="assets/img/flm.png">
+        </div>
+        <div class="sidebar-brand-text mx-3">Fast Lane Market</div>
+      </a>
+      <hr class="sidebar-divider my-0">
+
+
+
+
+
+      <li class="nav-item active">
+        <a class="nav-link" href="/livreur/consulter-commandes">
+          <i class="fas fa-fw fa-palette"></i>
+          <span>Commandes</span>
+        </a>
+      </li>
+
+
+
+
+      <hr class="sidebar-divider">
+      <div class="version" id="version-ruangadmin"></div>
+    </ul>
+    <!-- Sidebar -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <!-- TopBar -->
+        <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+
+          <ul class="navbar-nav ml-auto">
+            <div class="topbar-divider d-none d-sm-block"></div>
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <img class="img-profile rounded-circle" src="assets/img/boy.png" style="max-width: 60px">
+                <span class="ml-2 d-none d-lg-inline text-white small" style="margin-right:15px">Livreur</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="/l-modifier-profil">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item " href="/l-modifier-password">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  changer mot de passe
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <!-- Topbar -->
+        <!-- Container Fluid-->
+        <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Liste des commandes</h1>
+
+          </div>
+          
+<!--*****************************************************************************************************-->
+<!--*****************************************************************************************************-->
+
+  <div class="row container">
+   
+    <div class="col-lg-12 mb-4">
+      <!-- Simple Tables -->
+      <div class="card">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary col-9" >Commandes</h6>
+          <div class="input-group">
+            <div class="form-outline">
+              <input id="search-input" type="search" id="form1" class="form-control" placeholder="Recherche"/>
+            </div>
+            <button id="search-button" type="button" class="btn btn-primary" >
+              <i class="fas fa-search"></i>
+            </button>
+          </div>
+        </div>
+        
+        <div class="table-responsive">
+          <table class="table align-items-center table-flush">
+            <thead class="thead-light">
+              <tr>
+                <th>Id-C</th>
+                <th>client</th>
+                <th>produit</th>
+                <th>Montant</th>
+                <th>Date-C</th>
+                <th>Staut</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let commande of commandes" >
+
+              <tr>
+                <td>{{commande.ref_commande}}</td>
+                <td>{{commande.my_user.prenom}} {{commande.my_user.nom}}</td>
+                <td>
+                  <ul>
+                    <li *ngFor="let produit of commande.produits">{{produit.nom_produit}}</li>
+                  </ul>
+                </td>                
+                <td> {{commande.montant}}</td>
+                <td>{{commande.date_commande}}</td>
+                <td><button type="button" class="btn btn-primary btn-sm mb-1" (click)="etat_dialog.showModal()" (click)="afficher2(commande.ref_commande,commande.statut_commande)">en cour</button></td>
+                <td><button type="button" class="btn btn-light btn-sm mb-1" (click)="afficher(commande.ref_commande)"> d'étails</button></td>
+            </tr>
+            
+            </tbody>
+          </table>
+        </div>
+        <dialog #etat_dialog >
+
+
+
+          
+          <form #form="ngForm">
+            <div class="card text-center">
+              <div class="card-header">Statut Commande </div>
+              <div class="card-body">
+                <h5 class="card-title"></h5>
+                <select style="border: #2d3c91;" id="statut_commande" name="statut_commande" [(ngModel)]="statut_commande">
+                  <option value="livrer" [selected]="statut_commande === 'livrer'">Livrer</option>
+                  <option value="non livrer" [selected]="statut_commande === 'non livrer '">Non Livrer</option>
+                </select>
+              </div>
+              <div class="card-footer text-muted" >
+                <button (click)="onStatutChange(form)" (click)="etat_dialog.close()">Confirmé</button>
+                <button (click)="etat_dialog.close()">Fermer</button>
+              </div>
+            </div>
+          </form>
+          <div>
+
+          </div>
+        </dialog>
+        <div class="card-footer"></div>
+      </div>
+    </div>
+  </div>                
+
+<!--*****************************************************************************************************-->
+<!--*****************************************************************************************************-->
+
+          <!--Row-->
+
+          <!-- Modal Logout -->
+          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Are you sure you want to logout?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                  <button (click)="logout()" class="btn btn-primary">Logout</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!---Container Fluid-->
+      </div>
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>copyright &copy; <script> document.write(new Date().getFullYear()); </script>  2023 infolib. All rights reserved - developed by
+              <b><a href="https://indrijunanda.gitlab.io/" target="_blank">Rami Elfil</a></b>
+            </span>
+          </div>
+        </div>
+      </footer>
+      <!-- Footer -->
+    </div>
+  </div>
+
+  <!-- Scroll to top -->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+
+</body>
+
+</html>

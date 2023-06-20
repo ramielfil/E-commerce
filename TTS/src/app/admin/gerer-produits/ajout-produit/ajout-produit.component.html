@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link href="assets/img/logo/logo.png" rel="icon">
+  <title>RuangAdmin - Simple Tables</title>
+
+</head>
+
+<body id="page-top">
+  <div id="wrapper">
+    <!-- Sidebar -->
+    <ul class="navbar-nav sidebar sidebar-light accordion" id="accordionSidebar">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" >
+        <div class="sidebar-brand-icon">
+          <img src="assets/img/flm.png">
+        </div>
+        <div class="sidebar-brand-text mx-3">Fast Lane Market</div>
+      </a>
+      <hr class="sidebar-divider my-0">
+      <li class="nav-item">
+        <a class="nav-link" href="/admin-index">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Dashboard</span></a>
+      </li>
+      <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Interne
+      </div>
+      <li class="nav-item ">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBootstrap"
+          aria-expanded="true" aria-controls="collapseBootstrap">
+          <i class="far fa-fw fa-window-maximize"></i>
+          <span>clients</span>
+        </a>
+        <div id="collapseBootstrap" class="collapse " aria-labelledby="headingBootstrap" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Clients</h6>
+            <a class="collapse-item " href="/ajout-client">Ajouter un client</a>
+            <a class="collapse-item" href="/consulter-clients">Gérer les clients</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseForm" aria-expanded="true"
+          aria-controls="collapseForm">
+          <i class="fab fa-fw fa-wpforms"></i>
+          <span>Produits</span>
+        </a>
+        <div id="collapseForm" class="collapse show" aria-labelledby="headingForm" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Produits</h6>
+            <a class="collapse-item active" href="/ajout-produit">Ajouter un Produit</a>
+            <a class="collapse-item" href="/consulter-produits">Gérer les produits</a>
+          </div>
+        </div>
+      </li>
+
+      <li class="nav-item ">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTable" aria-expanded="true"
+          aria-controls="collapseTable">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Marques</span>
+        </a>
+        <div id="collapseTable" class="collapse " aria-labelledby="headingTable" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Marque</h6>
+            <a class="collapse-item" href="/ajout-marque">ajouter un marque</a>
+            <a class="collapse-item " href="/consulter-marques">Gérer les marques</a>
+
+          </div>
+        </div>
+      </li>
+      <li class="nav-item ">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsecategorie" aria-expanded="true"
+          aria-controls="collapseTable">
+          <i class="fas fa-fw fa-table"></i>
+          <span>Categories</span>
+        </a>
+      <div id="collapsecategorie" class="collapse " aria-labelledby="headingcategorie" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+          <h6 class="collapse-header">Categorie</h6>
+          <a class="collapse-item " href="/ajout-categorie">ajouter un categorie</a>
+          <a class="collapse-item " href="/consulter-categories">Gérer les categories</a>
+        </div>
+      </div>
+    </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/consulter-commandes">
+          <i class="fas fa-fw fa-palette"></i>
+          <span>Commandes</span>
+        </a>
+      </li>
+      <hr class="sidebar-divider">
+      <div class="sidebar-heading">
+        Externe
+      </div>
+      <li class="nav-item ">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePage" aria-expanded="true"
+          aria-controls="collapsePage">
+          <i class="fas fa-fw fa-columns"></i>
+          <span>Fournisseurs</span>
+        </a>
+        <div id="collapsePage" class="collapse " aria-labelledby="headingPage" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Fournisseurs</h6>
+            <a class="collapse-item " href="/ajout-fournisseur">Ajouter un fournisseur</a>
+            <a class="collapse-item" href="/consulter-fournisseurs">Gérer les fournisseurs</a>
+          </div>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseLivreur" aria-expanded="true"
+          aria-controls="collapseLivreur">
+          <i class="fas fa-fw fa-columns"></i>
+          <span>Livreurs</span>
+        </a>
+        <div id="collapseLivreur" class="collapse" aria-labelledby="headingPage" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Livreurs</h6>
+            <a class="collapse-item" href="/ajout-livreur">Ajouter un Livreur</a>
+            <a class="collapse-item" href="/consulter-livreurs">Gérer les Livreurs</a>
+          </div>
+        </div>
+      </li>
+
+      <hr class="sidebar-divider">
+      <div class="version" id="version-ruangadmin"></div>
+    </ul>
+    <!-- Sidebar -->
+    <div id="content-wrapper" class="d-flex flex-column">
+      <div id="content">
+        <!-- TopBar -->
+        <nav class="navbar navbar-expand navbar-light bg-navbar topbar mb-4 static-top">
+
+          <ul class="navbar-nav ml-auto">
+ 
+
+
+
+            <div class="topbar-divider d-none d-sm-block"></div>
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">
+                <img class="img-profile rounded-circle" src="assets/img/boy.png" style="max-width: 60px">
+                <span class="ml-2 d-none d-lg-inline text-white small" style="margin-right:15px">Admin</span>
+              </a>
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="/a-modifier-profil">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <a class="dropdown-item" href="/a-modifier-password">
+                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
+                  changer mot de passe
+                </a>
+                <a class="dropdown-item" href="/admin/consulter-contactus">
+                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Contact Us
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="javascript:void(0);" data-toggle="modal" data-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
+          </ul>
+        </nav>
+        <!-- Topbar -->
+        <!-- Container Fluid-->
+        <div class="container-fluid" id="container-wrapper">
+          <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 mb-0 text-gray-800">Produits</h1>
+
+          </div>
+<!--*****************************************************************************************************-->
+<!--*****************************************************************************************************-->
+<div class="container-login" id="container-wrapper">
+
+
+  <div class="row">
+    <div class="col-lg-8 container">
+      <!-- Form Basic -->
+      <div class="card mb-4">
+        <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+          <h6 class="m-0 font-weight-bold text-primary">Ajouter un fournisseur</h6>
+        </div>
+        <div class="card-body">
+          <form class="user" #form="ngForm"  (submit)="register(form)">
+            <div class="row">
+              <div class="col-6 form-group">
+                <label for="prenom">Libellé</label>
+              <input type="text" class="form-control" id="nom_produit" 
+                placeholder="Libellé Produit ..."
+                ngModel name="nom_produit"
+                #nom_produit ="ngModel"
+                required >
+              </div>
+              <div class="col-6  form-group"> 
+                <label for="prix">Prix_produit</label>
+                <input type="text" class="form-control" id="prix_produit" 
+                  placeholder="Enter Prix  "
+                  ngModel name="prix_produit"
+                  #prix_produit ="ngModel"
+                  required
+                  >
+              </div>
+            </div>
+                          <div class="col-12 form-group">
+                <label for="Nom">description</label>
+              <textarea  cols="30" rows="5"  class="form-control" id="desc_produit" 
+                placeholder="description..."
+                ngModel name="desc_produit"
+                #desc_produit ="ngModel"
+                required ></textarea>
+              </div>
+          
+<hr>
+           <div class=" row">
+            <div class="col-4  form-group"> 
+              <label class="image1">  photo de couverture</label>
+
+           <div class="form-group">
+            <input type="file"   accept="image/*" 
+            (change)="onSelectFile1($event)">
+            <img [src]="imgURL1" height="100" *ngIf="imgURL1" 
+            ngModel name="img1"
+            #img1 ="ngModel"
+            required >
+          </div>
+            </div>
+            <div class="col-4 form-group">
+              <label for="ref_marque">Marque:</label>
+              <select name="ref_marque" [(ngModel)]="form_login.marque" required>
+                <option *ngFor="let item of marque" [value]="item.ref_marque">{{ item.nom_marque }}</option>
+              </select>
+            </div>
+            
+            <div class="col-4 form-group">
+              <label for="ref_categorie">Catégorie:</label>
+              <select name="ref_categorie" [(ngModel)]="form_login.ref_categorie" required>
+                <option *ngFor="let item of categorie" [value]="item.ref_categorie">{{ item.nom_categorie }}</option>
+              </select>
+            </div>
+            </div>
+          
+          <hr>
+          <div class="row">  
+            <div class="col-6 form-group">
+            <label for="couleur">Couleur</label>
+            <input type="text" class="form-control" id="couleur" 
+            placeholder="Couleur ..."
+            ngModel name="couleur"
+            #couleur ="ngModel"
+            required >
+        </div>
+          <div class="col-6 form-group">
+            <label for="Nom">Qualité Camera</label>
+          <input type="text" class="form-control" id="qualite_camera" 
+            placeholder="Qualtié de Camera ..."
+            ngModel name="qualite_camera"
+            #qualite_camera ="ngModel"
+            required >
+          </div>
+
+        </div>
+
+        <div class=" row">
+        <div class="col-6 form-group">
+          <label for="Nom">Processeur</label>
+        <input type="text" class="form-control" id="processeur" 
+          placeholder="Type De processeur ... " 
+          ngModel name="processeur"
+  #processeur ="ngModel"
+  required
+          >
+        </div>
+        <div class="col-6 form-group">
+          <label for="ram">Ram</label>
+        <input type="text" class="form-control" id="ram" 
+          placeholder="Taille Du Ram ..."
+          ngModel name="ram"
+  #ram ="ngModel"
+  required
+          >
+        </div>
+      </div>
+
+
+      <div class=" row">
+        <div class="col-4 form-group">
+          <label for="num_tel">Sim</label>
+        <input type="text" class="form-control" id="sim" 
+          placeholder="Nombre Du Sim ..."
+          ngModel name="sim"
+  #sim ="ngModel"
+  required>
+        </div>
+        <div class="col-4 form-group">
+          <label for="num_tel">Stockage</label>
+        <input type="text" class="form-control" id="stockage" 
+          placeholder="Taille Du stockage ..."
+          ngModel name="stockage"
+  #stockage ="ngModel"
+  required>
+        </div>
+
+          <div class="col-4  form-group"> 
+          <label for="garantie">Garantie</label>
+          <input type="text" class="form-control" id="garantie" 
+            placeholder="Duré  Du garantie ... "
+            ngModel name="garantie"
+            #garantie ="ngModel"
+            required
+            >
+        </div>
+
+
+      </div>
+      <div class=" row">
+          <div class="col-6 form-group">
+            <label for="num_tel">Taille D'écran</label>
+          <input type="text" class="form-control" id="taille_ecran" 
+            placeholder="Taille D'écran ..."
+            ngModel name="taille_ecran"
+            #taille_ecran ="ngModel"
+            required>
+          </div>
+          <div class="col-6 form-group">
+            <label for="num_tel">Graphique</label>
+          <input type="text" class="form-control" id="graphique" 
+            placeholder="Graphique ..."
+            ngModel name="graphique"
+            #graphique ="ngModel"
+            required>
+          </div>
+        </div>
+          
+          
+
+          <div class="text-center">
+            <button class="btn btn-primary ">Submit</button></div>
+          </form>
+        </div>
+      </div></div></div></div>
+<!--*****************************************************************************************************-->
+<!--*****************************************************************************************************-->
+
+
+          <!-- Modal Logout -->
+          <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelLogout"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabelLogout">Ohh No!</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Are you sure you want to logout?</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-outline-primary" data-dismiss="modal">Cancel</button>
+                  <a href="login.html" class="btn btn-primary">Logout</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <!---Container Fluid-->
+      </div>
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>copyright &copy; <script> document.write(new Date().getFullYear()); </script>  2023 infolib. All rights reserved - developed by
+              <b><a href="https://indrijunanda.gitlab.io/" target="_blank">Rami Elfil</a></b>
+            </span>
+          </div>
+        </div>
+      </footer>
+      <!-- Footer -->
+    </div>
+  </div>
+
+  <!-- Scroll to top -->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+
+
+</body>
+
+</html>

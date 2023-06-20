@@ -1,0 +1,16 @@
+dialog {
+    color: rgb(48, 76, 203);
+    border-color: transparent;
+    overflow: hidden;
+    border-radius: 5px;
+    cursor: pointer;
+    box-shadow: 0 0 20px 8px #d0d0d0;
+    height: 200px;
+    width: 400px;
+ }
+ #etat_dialog2 {
+  display: flex;
+  justify-content: center;
+}
+
+

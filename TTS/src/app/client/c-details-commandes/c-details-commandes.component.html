@@ -1,0 +1,141 @@
+<app-header></app-header>
+<br>
+<div id="facture-print" class="facture-print">
+  
+    <div class="container-login">
+      <div class="row">
+              <div class="col-lg-12">
+                  <div class="card">
+                      <div class="card-body">
+                        <img src="assets/img/flm.png" class="float-end font-size-15" height="100" width="100">
+                        
+                        <div class="invoice-title">
+                              <div class="mb-4">
+                                 <h2 class="mb-1 text-muted">FastLaneMarket.com</h2>
+                              </div>
+                              <div class="text-muted">
+                                  <p class="mb-1">Tunis : Bureau B1-3, Immeuble CORAL, 1082, Tunis 1002</p>
+                                  <p class="mb-1"><i class="uil uil-envelope-alt me-1"></i> FastLaneMarket@gmail.com</p>
+                                  <p><i class="uil uil-phone me-1"></i> +216 20118687</p>
+                              </div>
+                          </div>
+      
+                          <hr class="my-4">
+      
+                          <div class="row">
+                              <div class="col-sm-9">
+                                  <div class="text-muted">
+                                      <h5 class="font-size-16 mb-3 " style="color: cadetblue;">Cordonnées Du Client</h5>
+                                      <h5 class="font-size-15 mb-2">{{commande.my_user.nom }} {{commande.my_user.prenom }}</h5>
+                                      <p class="mb-1">{{commande.adresse }}</p>
+                                      <p class="mb-1">{{commande.my_user.email }}</p>
+                                      <p>{{commande.my_user.numtel }}</p>
+                                  </div>
+                              </div>
+                              <!-- end col -->
+                              <div class="col-sm-3" style="padding-left: 60px;">
+                                  <!-- <div class="text-muted text-sm-end"> -->
+                                    <div>
+                                        <p class="font-size-15 mb-1">
+                                          <span style="font-weight: bold; font-size: larger; color: black; ">Numero de Commande : </span>
+                                          {{commande.ref_commande}}
+                                        </p>
+                                      </div>
+                                      <div>
+                                        <p class="font-size-15 mb-1">
+                                          <span style="font-weight: bold; font-size: larger; color: black; ">Date Commande : </span>
+                                          {{commande.date_commande}}
+                                        </p>
+                                      </div>                                      <div>
+                                        <p class="font-size-15 mb-1">
+                                          <span style="font-weight: bold; font-size: larger; color: black; ">Etat Commande : </span>
+                                          {{commande.etat}}
+                                        </p>
+                                      </div>
+                                      <div>
+                                        <p class="font-size-15 mb-1">
+                                          <span style="font-weight: bold; font-size: larger; color: black; ">Statut Commande : </span>
+                                          {{commande.statut_commande}}
+                                        </p>
+                                      </div>
+
+                                  </div>
+
+                              </div>
+                              <!-- end col -->
+                          </div>
+                          <!-- end row -->
+                          
+                          <div class="py-2">
+                              <h5 class="font-size-15" style="padding-left: 10px;">  Liste des Produits</h5>
+      
+                              <div class="table-responsive">
+                                  <table class="table align-middle table-nowrap table-centered mb-0">
+                                      <thead>
+                                          <tr>
+                                              <th style="width: 70px;">Ref_produit</th>
+                                              <th>Nom Produit</th>
+                                              <th>prix</th>
+                                              <th>Quantité</th>
+                                              <th class="text-end" style="width: 120px;">Montant</th>
+                                          </tr>
+                                      </thead><!-- end thead -->
+                                      <tbody *ngFor="let produit of commande.produits">
+                                          <tr>
+                                              <th scope="row">{{produit.ref_produit}}</th>
+                                              <td>
+                                                  <div>
+                                                      <h5 class="text-truncate font-size-14 mb-1">{{produit.nom_produit}}</h5>
+                                                      <p class="text-muted mb-0">{{produit.categorie.nom_categorie}}, {{produit.marque.nom_marque}}</p>
+                                                  </div>
+                                              </td>
+                                              <td>{{produit.prix_produit}} DT</td>
+                                              <td>{{produit.quantite}}</td>
+                                              <td class="text-end">{{produit.prix_produit * produit.quantite}} DT</td>
+                                          </tr>
+                                          <!-- end tr -->
+                                          <!-- end tr -->
+                                        </tbody>
+                                          <tr>
+                                              <th scope="row" colspan="4" class="text-end"> Sous-total</th>
+                                              <td class="text-end">{{totalMontant}} DT</td>
+                                          </tr>
+                                          <!-- end tr -->
+                                          <tr>
+                                              <th scope="row" colspan="4" class="border-0 text-end">
+                                                  Tax :</th>
+                                              <td class="border-0 text-end">0 DT</td>
+                                          </tr>
+                                          <!-- end tr -->
+                                          <tr>
+                                              <th scope="row" colspan="4" class="border-0 text-end">
+                                                  Livraison :</th>
+                                              <td class="border-0 text-end">7 DT</td>
+                                          </tr>
+                                          <!-- end tr -->
+    
+                                          <!-- end tr -->
+                                          <tr>
+                                              <th scope="row" colspan="4" class="border-0 text-end">Total</th>
+                                              <td class="border-0 text-end"><h4 class="m-0 fw-semibold">{{totalMontant + 7  +"DT"}}  </h4></td>
+                                          </tr>
+                                          <!-- end tr -->
+                                     <!-- end tbody -->
+                                  </table><!-- end table -->
+                              </div><!-- end table responsive -->
+                              <div class="d-print-none mt-4">
+                                  <div class="float-end">
+                                    <a href="javascript:void(0)" class="btn btn-success me-1" (click)="printDiv()">Imprimer <i class="fa fa-print"></i></a>
+  
+                                                                      
+                                     <a href="/mes-reservations" class="btn btn-primary w-md">Retour</a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div><!-- end col -->
+          </div>
+      </div>
+    <br>
+<app-footer></app-footer>

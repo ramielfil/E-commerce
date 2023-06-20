@@ -1,0 +1,57 @@
+
+.product-desc {
+    max-height: 3em; /* 2 lines of text */
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .carousel-item-content {
+    position: relative;
+  }
+
+
+  #small_desc {
+    max-height: calc(2em * 2); /* Set the max height to 2 lines */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  #small_desc2{
+    max-height: calc(1.5em * 1); /* Set the max height to 2 lines */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  
+  .carousel-1, .carousel-2 {
+    max-width: 400px; /* Définissez une largeur plus petite */
+
+    margin: 0 auto; /* Centrez le contenu horizontalement */
+  }
+  .carousel-container.carousel-1 {
+    position: relative;
+  }
+  
+  .carousel-caption {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5rem;
+  }
+  
+  #small_nom {
+    background-color: rgba(0, 0, 0, 0.8); /* Couleur d'arrière-plan presque noir */
+    color: #ffffff; /* Couleur du texte en blanc */
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0.5rem;
+    height: 3rem; /* Hauteur de la section */
+    line-height: 2rem; /* Hauteur de ligne égale à la hauteur de la section */
+    white-space: nowrap; /* Empêche le texte de se retourner à la ligne */
+  }
+  
+
