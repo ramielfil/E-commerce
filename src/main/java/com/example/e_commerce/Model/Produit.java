@@ -1,10 +1,11 @@
 package com.example.e_commerce.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonView;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -18,22 +19,69 @@ import java.util.Set;
 @NoArgsConstructor
 @Getter
 @Setter
+@Builder
+
 public class Produit implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long ref_produit;
-    @Column(length =20)
+    @Column
+    @Lob
+
     private String nom_produit;
-    @Column(length =555)
+    @Column
+    @Lob
     private String desc_produit;
     @Column(length =20)
-    private float prix_produit;
-    @Column(length =1)
-    private int statut_produit;
-    @Column(length =20)
-    private int quantite_produit;
+    @Lob
+    private String prix_produit;
+    @Column (length =20)
+    @Lob
+    private String quantitue_produit;
+    @Lob
+    private String name1;
+    @Lob
+    private String type1;
+    @Lob
+    @Column(name = "imagedata1",columnDefinition = "LONGBLOB")
+    private byte[] imageData1;
 
-    @ManyToMany(mappedBy = "produits", cascade = { CascadeType.ALL })
-    private Set<Commande> commande = new HashSet<Commande>();
 
+
+
+
+    @ManyToMany(mappedBy = "produits", cascade = { CascadeType.ALL }, fetch = FetchType.EAGER)
+    @JsonBackReference
+    private List<Commande> commandes = new ArrayList<>();
+
+
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="ref_marque", nullable=false)
+    private Marque marque;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="ref_categorie", nullable=false)
+    private Categorie categorie;
+    @Column
+    private String stockage;
+    @Column
+    private String garantie;
+    @Column
+    private String couleur;
+    @Column
+    private String taille_ecran;
+    @Column
+    private String ram;
+    @Column
+    private String sim;
+    @Column
+    private String processeur;
+    @Column
+    private String  qualite_camera;
+    @Column
+    private String  graphique;
+    // qunatite
+    @Column(columnDefinition = "int default 0")
+    private int quantite;
 }

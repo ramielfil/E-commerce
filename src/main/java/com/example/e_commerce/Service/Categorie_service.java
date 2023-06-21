@@ -3,6 +3,7 @@ package com.example.e_commerce.Service;
 
 import com.example.e_commerce.Exception.UserNotFoundException;
 import com.example.e_commerce.Model.Categorie;
+import com.example.e_commerce.Model.Produit;
 import com.example.e_commerce.Repository.Categorie_Repository;
 import jakarta.transaction.Transactional;
 import lombok.extern.slf4j.Slf4j;
@@ -11,7 +12,6 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 @Transactional
@@ -24,6 +24,11 @@ public class Categorie_service {
     public void Add(Categorie categorie){
         log.info("ADD Categorie \n");
         categorieRepository.save(categorie);
+    }
+
+    public List<Produit> getProduitsByCategorieId(Long categorieId) {
+        log.info("Get produits by categorieId: {}", categorieId);
+        return categorieRepository.findProduitsByCategorieId(categorieId);
     }
 
     public List<Categorie> GetAll(){

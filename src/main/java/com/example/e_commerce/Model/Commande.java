@@ -1,5 +1,8 @@
 package com.example.e_commerce.Model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -35,6 +38,20 @@ public class Commande implements Serializable {
     private String statut_commande;
     @Column(length =20)
     private float montant;
+    @Column(length =20)
+    private int code_postal;
+    @Column(length =20)
+    private String type_depaiement;
+    @Column
+    private String message;
+    @Column(columnDefinition = "varchar(20) default 'en attente'")
+    private String etat;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="id", nullable=false)
+    private my_user my_user;
+
+
 
 
     //relation entre les tables
@@ -43,9 +60,9 @@ public class Commande implements Serializable {
             name = "Commande_Produit",
             joinColumns = { @JoinColumn(name = "ref_commande") },
             inverseJoinColumns = { @JoinColumn(name = "ref_produit") }
-
     )
-    Set< Produit > produits = new HashSet< Produit >();
+
+    private List<Produit> produits = new ArrayList<>();
 
 
 }

@@ -26,7 +26,11 @@ public class commande_api {
 
     @PostMapping("Add")
     private ResponseEntity<String> Add(@RequestBody Commande commande){
+        commande.getProduits().forEach(
+                produit -> log.info(produit.getNom_produit())
+        );
         commandeService.Add(commande);
+
         return new ResponseEntity<>("saved_commande", HttpStatus.CREATED);
     }
 
@@ -41,14 +45,14 @@ public class commande_api {
         return new ResponseEntity<>("deleted_commande", HttpStatus.OK);
     }
 
-    @PutMapping("update_adresse/{ref_commande}")
-    private ResponseEntity<String> update(@PathVariable("ref_commande") Long ref_commande ,@RequestParam("adresse") String adresse ){
-        commandeService.Update_adresse(ref_commande, adresse);
+    @PutMapping("update_statut/{ref_commande}")
+    private ResponseEntity<String> update_statut(@PathVariable("ref_commande") Long ref_commande ,@RequestParam("statut_commande") String statut_commande ){
+        commandeService.Update_statut(ref_commande, statut_commande);
         return new ResponseEntity<>("updted_commande", HttpStatus.OK);
     }
-    @PutMapping("update_statut/{ref_commande}")
-    private ResponseEntity<String> updatestatut(@PathVariable("ref_commande") Long ref_commande ,@RequestParam("statut") String statut ){
-        commandeService.Update_statut(ref_commande, statut);
+    @PutMapping("Update_etat/{ref_commande}")
+    private ResponseEntity<String> Update_etat(@PathVariable("ref_commande") Long ref_commande ,@RequestParam("etat") String etat ){
+        commandeService.Update_etat(ref_commande, etat);
         return new ResponseEntity<>("updted_commande", HttpStatus.OK);
     }
 }
